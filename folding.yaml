@@ -17,7 +17,7 @@ spec:
   selector:
     matchLabels:
       app: fah
-  replicas: 3 # Set number of replicas to run - one replica per node
+  replicas: 3 # Set number of replicas to run
   template:
     metadata:
       labels:
