@@ -10,13 +10,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fah
+  namespace: fah
   labels:
     app: fah  
 spec:
   selector:
     matchLabels:
       app: fah
-  replicas: 2 # Set number of replicas to run - one replica per node
+  replicas: 3 # Set number of replicas to run - one replica per node
   template:
     metadata:
       labels:
@@ -34,7 +35,7 @@ spec:
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: fah
-        image: "richstokes20/fah-covid:latest"
+        image: "harbor.pks.kirklab.io/fah/fah:latest"
         imagePullPolicy: Always
         resources:
           limits:
@@ -57,6 +58,7 @@ spec:
 # kind: ConfigMap
 # metadata:
 #   name: foldingathome-config
+#   namespace: fah
 # data:
 #   config.xml: |
 #     <config>
@@ -64,28 +66,23 @@ spec:
 #         To set your user name, team and passkey just edit the text
 #         in quotes below.
 #       -->
-
 #       <!-- User Information -->
-#       <user value=""/> <!-- Enter your user name here -->
-#       <team value=""/>         <!-- Your team number -->
+#       <user value="bkirkland"/> <!-- Enter your user name here -->
+#       <team value="52737"/>         <!-- Your team number -->
 #       <passkey value=""/>       <!-- 32 hexadecimal characters if provided -->
-
 #       <power value="full"/>     <!-- Throttling this at K8s level -->
-#       <gpu value="true"/>      <!-- If true, attempt to autoconfigure GPUs -->
+#       <gpu value="false"/>      <!-- If true, attempt to autoconfigure GPUs -->
 #       <fold-anon value="true"/>
-
 #       <!-- Folding Slots
 #         No folding slot configuration is necessary.  The client will
 #         automaticlaly choose a good configuration for you.  However, here
 #         are some examples:
-      
+#     
 #           <slot id="0" type="CPU"/>
-
 #         or
-        
+#       
 #           <slot id="0" type="CPU"/>
 #           <slot id="1" type="GPU"/>
-
 #         All slots in a configuration MUST have unique ids.
 #       -->
 #     </config>

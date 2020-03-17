@@ -5,12 +5,12 @@
   -->
 
   <!-- User Information -->
-  <user value=""/> <!-- Enter your user name here -->
-  <team value=""/>         <!-- Your team number -->
+  <user value="bkirkland"/> <!-- Enter your user name here -->
+  <team value="52737"/>         <!-- Your team number -->
   <passkey value=""/>       <!-- 32 hexadecimal characters if provided -->
 
   <power value="full"/>     <!-- Throttling this at K8s level -->
-  <gpu value="true"/>      <!-- If true, attempt to autoconfigure GPUs -->
+  <gpu value="false"/>      <!-- If true, attempt to autoconfigure GPUs -->
   <fold-anon value="true"/>
 
   <!-- Folding Slots
